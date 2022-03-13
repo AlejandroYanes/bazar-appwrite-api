@@ -1,0 +1,33 @@
+{
+    "name": "bazar-appwrite-api-helpers",
+    "version": "0.1.0",
+    "description": "bazar-api helper project (seeds, migrations...)",
+    "main": "index.js",
+    "scripts": {
+        "test": "npm test",
+        "seed": "node ./scripts/seed.js",
+        "clearDB": "node ./scripts/clear-db.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AlejandroYanes/bazar-appwrite-api.git"
+    },
+    "keywords": [
+        "api",
+        "seed",
+        "migration",
+        "helper"
+    ],
+    "author": "ayanes",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/AlejandroYanes/bazar-appwrite-api/issues"
+    },
+    "homepage": "https://github.com/AlejandroYanes/bazar-appwrite-api#readme",
+    "dependencies": {
+        "@faker-js/faker": "^6.0.0-beta.0",
+        "dotenv": "^16.0.0",
+        "faker": "^4.1.0",
+        "node-appwrite": "^5.0.0"
+    }
+}
