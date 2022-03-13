@@ -22,6 +22,14 @@ async function clearDB() {
   const categories = await db.listDocuments(process.env.SEED_COLLECTION_CATEGORIES);
   const subCategories = await db.listDocuments(process.env.SEED_COLLECTION_SUB_CATEGORIES);
   const products = await db.listDocuments(process.env.SEED_COLLECTION_PRODUCTS);
+
+  console.log('--------------------------------');
+  console.log('Clear DB script: Items to remove');
+  console.log('Categories: ', categories.sum);
+  console.log('Sub-Categories: ', subCategories.sum);
+  console.log('Products: ', products.sum);
+  console.log('--------------------------------');
+
   const promises = [].concat(
     categories.documents.map((item) => {
       return db.deleteDocument(process.env.SEED_COLLECTION_CATEGORIES, item.$id);

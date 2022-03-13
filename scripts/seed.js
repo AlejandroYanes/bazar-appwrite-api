@@ -95,7 +95,7 @@ function generateFakeProducts(subCategory) {
     return {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
-      price: parseFloat(faker.commerce.price(10, 1000)),
+      price: parseFloat(faker.commerce.price(5, 5000, 2)),
       images,
       thumbnail: faker.random.arrayElement(images),
       subCategoryId: subCategory.$id,
