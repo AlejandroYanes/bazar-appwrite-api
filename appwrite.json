@@ -1,0 +1,173 @@
+{
+    "projectId": "622c5b9c55c5bf1ee0c7",
+    "projectName": "Bazar",
+    "collections": [
+        {
+            "$id": "622cef5bb5004225507b",
+            "$read": [],
+            "$write": [],
+            "name": "Products",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "description",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "price",
+                    "type": "integer",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "min": 0,
+                    "max": 9223372036854776000,
+                    "default": null
+                },
+                {
+                    "key": "subCategoryId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "622d12541890a31077b3",
+            "$read": [],
+            "$write": [],
+            "name": "Categories",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "622d12746b14bc21623b",
+            "$read": [],
+            "$write": [],
+            "name": "SubCategories",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 50,
+                    "default": null
+                },
+                {
+                    "key": "categoryId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "622d1ba9a7da655d27f2",
+            "$read": [],
+            "$write": [],
+            "name": "ProductOptions",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "values",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": true,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "price",
+                    "type": "double",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "min": -1.7976931348623157e+308,
+                    "max": 1.7976931348623157e+308,
+                    "default": null
+                },
+                {
+                    "key": "productId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "622d1c931ed1cb63bc73",
+            "$read": [
+                "role:all"
+            ],
+            "$write": [],
+            "name": "Tags",
+            "enabled": true,
+            "permission": "collection",
+            "attributes": [
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        }
+    ]
+}
