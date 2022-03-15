@@ -1,5 +1,5 @@
 {
-    "projectId": "622fc6c92b9e4f4716f7",
+    "projectId": "6230df385dd960efcdf3",
     "projectName": "Bazar",
     "collections": [
         {
@@ -42,7 +42,7 @@
                     "key": "images",
                     "type": "string",
                     "status": "available",
-                    "required": false,
+                    "required": true,
                     "array": true,
                     "size": 255,
                     "default": null
@@ -182,7 +182,7 @@
                     "default": null
                 },
                 {
-                    "key": "categoryId",
+                    "key": "category",
                     "type": "string",
                     "status": "available",
                     "required": true,
@@ -211,7 +211,7 @@
                     "default": null
                 },
                 {
-                    "key": "productId",
+                    "key": "product",
                     "type": "string",
                     "status": "available",
                     "required": true,

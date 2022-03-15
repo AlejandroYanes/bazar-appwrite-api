@@ -13,6 +13,7 @@ function initClient() {
 const dataStructure = [
   {
     name: 'Hogar',
+    icon: 'HOME',
     sub: [
       { name: 'Decoracion' },
       { name: 'Muebles' },
@@ -22,6 +23,7 @@ const dataStructure = [
   },
   {
     name: 'Moda',
+    icon: 'FASHION',
     sub: [
       { name: 'Ropa de Hombre' },
       { name: 'Ropa de Mujer' },
@@ -31,6 +33,7 @@ const dataStructure = [
   },
   {
     name: 'Tecnologia',
+    icon: 'DEVICES',
     sub: [
       { name: 'Telefonos' },
       { name: 'Computadoras' },
@@ -39,6 +42,7 @@ const dataStructure = [
   },
   {
     name: 'Mascotas',
+    icon: 'PET',
     sub: [
       { name: 'Comida' },
       { name: 'Medicamentos' },
@@ -48,14 +52,14 @@ const dataStructure = [
   },
 ];
 const imagePacks = [
-  ['622e25532a50bf7676e6', '622e255a688dd0b2c582', '622e25602c5bd26e4377', '622e25666303d73285dd', '622e256c0c6858ac349e'],
-  ['622e253e6599d7c5a2ef', '622e2544667bb5abde51', '622e2549eabde8eed7aa'],
-  ['622e2524332054eeba98', '622e252e6e73d21686e2', '622e2538354ba51a64fb'],
+  ['6230e694833eba9af7fd', '6230e68c8408102676f5', '6230e6863886926773ae', '6230e680d510c4ebdcd3', '6230e679ea1db38c9a89'],
+  ['6230e67302462c83920c', '6230e66d9fa17c991995', '6230e6673888c07e0662'],
+  ['6230e65aa161f312621f', '6230e653e8dc7794f676', '6230e64635a01953213e'],
 ];
 
 function seedCategories(db) {
   const promises = dataStructure.map((cat) => {
-    return db.createDocument(process.env.SEED_COLLECTION_CATEGORIES, 'unique()', { name: cat.name });
+    return db.createDocument(process.env.SEED_COLLECTION_CATEGORIES, 'unique()', { name: cat.name, icon: cat.icon });
   });
   return Promise.all(promises);
 }
@@ -65,7 +69,7 @@ function seedSubCategories(db, categories) {
     const category = dataStructure[index];
     const subCategories = category.sub;
     return subCategories.map((sub) => {
-      return db.createDocument(process.env.SEED_COLLECTION_SUB_CATEGORIES, 'unique()', { name: sub.name, categoryId: cat.$id });
+      return db.createDocument(process.env.SEED_COLLECTION_SUB_CATEGORIES, 'unique()', { name: sub.name, category: cat.$id });
     });
   });
   const flattenPromises = promises.flat();
@@ -98,7 +102,7 @@ function generateFakeProducts(subCategory) {
       price: parseFloat(faker.commerce.price(5, 5000, 2)),
       images,
       thumbnail: faker.random.arrayElement(images),
-      subCategoryId: subCategory.$id,
+      subCategory: subCategory.$id,
     };
   });
 }

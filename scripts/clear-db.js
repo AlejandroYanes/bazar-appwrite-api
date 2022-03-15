@@ -25,9 +25,9 @@ async function clearDB() {
 
   console.log('--------------------------------');
   console.log('Clear DB script: Items to remove');
-  console.log('Categories: ', categories.sum);
-  console.log('Sub-Categories: ', subCategories.sum);
-  console.log('Products: ', products.sum);
+  console.log('Categories: ', categories.total);
+  console.log('Sub-Categories: ', subCategories.total);
+  console.log('Products: ', products.total);
   console.log('--------------------------------');
 
   const promises = [].concat(
