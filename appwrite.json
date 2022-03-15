@@ -1,5 +1,5 @@
 {
-    "projectId": "622c5b9c55c5bf1ee0c7",
+    "projectId": "622fc6c92b9e4f4716f7",
     "projectName": "Bazar",
     "collections": [
         {
@@ -23,23 +23,41 @@
                     "key": "description",
                     "type": "string",
                     "status": "available",
-                    "required": true,
+                    "required": false,
                     "array": false,
                     "size": 255,
                     "default": null
                 },
                 {
                     "key": "price",
-                    "type": "integer",
+                    "type": "double",
                     "status": "available",
                     "required": false,
                     "array": false,
-                    "min": 0,
-                    "max": 9223372036854776000,
+                    "min": -1.7976931348623157e+308,
+                    "max": 1.7976931348623157e+308,
                     "default": null
                 },
                 {
-                    "key": "subCategoryId",
+                    "key": "images",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": true,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "thumbnail",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "subCategory",
                     "type": "string",
                     "status": "available",
                     "required": true,
@@ -48,18 +66,94 @@
                     "default": null
                 }
             ],
-            "indexes": []
+            "indexes": [
+                {
+                    "key": "NameFullTextASC",
+                    "type": "fulltext",
+                    "status": "available",
+                    "attributes": [
+                        "name"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                },
+                {
+                    "key": "NameFullTextDESC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "name"
+                    ],
+                    "orders": [
+                        "DESC"
+                    ]
+                },
+                {
+                    "key": "PriceDESC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "price"
+                    ],
+                    "orders": [
+                        "DESC"
+                    ]
+                },
+                {
+                    "key": "PriceASC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "price"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                },
+                {
+                    "key": "DescriptionFullTextASC",
+                    "type": "fulltext",
+                    "status": "available",
+                    "attributes": [
+                        "description"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                },
+                {
+                    "key": "DescriptionFullTextDESC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "description"
+                    ],
+                    "orders": [
+                        "DESC"
+                    ]
+                }
+            ]
         },
         {
-            "$id": "622d12541890a31077b3",
+            "$id": "622fc7c351073b90e7a1",
             "$read": [],
             "$write": [],
             "name": "Categories",
             "enabled": true,
-            "permission": "document",
+            "permission": "collection",
             "attributes": [
                 {
                     "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "icon",
                     "type": "string",
                     "status": "available",
                     "required": true,
@@ -71,12 +165,12 @@
             "indexes": []
         },
         {
-            "$id": "622d12746b14bc21623b",
+            "$id": "622fc7f915f2e3eae375",
             "$read": [],
             "$write": [],
-            "name": "SubCategories",
+            "name": "Subcategories",
             "enabled": true,
-            "permission": "document",
+            "permission": "collection",
             "attributes": [
                 {
                     "key": "name",
@@ -84,7 +178,7 @@
                     "status": "available",
                     "required": true,
                     "array": false,
-                    "size": 50,
+                    "size": 255,
                     "default": null
                 },
                 {
@@ -100,12 +194,12 @@
             "indexes": []
         },
         {
-            "$id": "622d1ba9a7da655d27f2",
+            "$id": "622fe47df0d7f38b8bf5",
             "$read": [],
             "$write": [],
-            "name": "ProductOptions",
+            "name": "Product Options",
             "enabled": true,
-            "permission": "document",
+            "permission": "collection",
             "attributes": [
                 {
                     "key": "name",
@@ -117,11 +211,11 @@
                     "default": null
                 },
                 {
-                    "key": "values",
+                    "key": "productId",
                     "type": "string",
                     "status": "available",
                     "required": true,
-                    "array": true,
+                    "array": false,
                     "size": 255,
                     "default": null
                 },
@@ -134,24 +228,13 @@
                     "min": -1.7976931348623157e+308,
                     "max": 1.7976931348623157e+308,
                     "default": null
-                },
-                {
-                    "key": "productId",
-                    "type": "string",
-                    "status": "available",
-                    "required": true,
-                    "array": false,
-                    "size": 255,
-                    "default": null
                 }
             ],
             "indexes": []
         },
         {
-            "$id": "622d1c931ed1cb63bc73",
-            "$read": [
-                "role:all"
-            ],
+            "$id": "622fe58a804e61e8d90d",
+            "$read": [],
             "$write": [],
             "name": "Tags",
             "enabled": true,
