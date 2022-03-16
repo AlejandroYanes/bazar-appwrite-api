@@ -11,11 +11,38 @@
             "permission": "document",
             "attributes": [
                 {
+                    "key": "subCategory",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "thumbnail",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
                     "key": "name",
                     "type": "string",
                     "status": "available",
                     "required": true,
                     "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "images",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": true,
                     "size": 255,
                     "default": null
                 },
@@ -37,33 +64,6 @@
                     "min": -1.7976931348623157e+308,
                     "max": 1.7976931348623157e+308,
                     "default": null
-                },
-                {
-                    "key": "images",
-                    "type": "string",
-                    "status": "available",
-                    "required": true,
-                    "array": true,
-                    "size": 255,
-                    "default": null
-                },
-                {
-                    "key": "thumbnail",
-                    "type": "string",
-                    "status": "available",
-                    "required": true,
-                    "array": false,
-                    "size": 255,
-                    "default": null
-                },
-                {
-                    "key": "subCategory",
-                    "type": "string",
-                    "status": "available",
-                    "required": true,
-                    "array": false,
-                    "size": 255,
-                    "default": null
                 }
             ],
             "indexes": [
@@ -79,11 +79,33 @@
                     ]
                 },
                 {
+                    "key": "DescriptionFullTextASC",
+                    "type": "fulltext",
+                    "status": "available",
+                    "attributes": [
+                        "description"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                },
+                {
                     "key": "NameFullTextDESC",
                     "type": "key",
                     "status": "available",
                     "attributes": [
                         "name"
+                    ],
+                    "orders": [
+                        "DESC"
+                    ]
+                },
+                {
+                    "key": "DescriptionFullTextDESC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "description"
                     ],
                     "orders": [
                         "DESC"
@@ -112,22 +134,22 @@
                     ]
                 },
                 {
-                    "key": "DescriptionFullTextASC",
-                    "type": "fulltext",
+                    "key": "SubCategoryASC",
+                    "type": "key",
                     "status": "available",
                     "attributes": [
-                        "description"
+                        "subCategory"
                     ],
                     "orders": [
                         "ASC"
                     ]
                 },
                 {
-                    "key": "DescriptionFullTextDESC",
+                    "key": "SubCategoryDESC",
                     "type": "key",
                     "status": "available",
                     "attributes": [
-                        "description"
+                        "subCategory"
                     ],
                     "orders": [
                         "DESC"
@@ -137,7 +159,9 @@
         },
         {
             "$id": "622fc7c351073b90e7a1",
-            "$read": [],
+            "$read": [
+                "role:all"
+            ],
             "$write": [],
             "name": "Categories",
             "enabled": true,
@@ -166,21 +190,14 @@
         },
         {
             "$id": "622fc7f915f2e3eae375",
-            "$read": [],
+            "$read": [
+                "role:all"
+            ],
             "$write": [],
             "name": "Subcategories",
             "enabled": true,
             "permission": "collection",
             "attributes": [
-                {
-                    "key": "name",
-                    "type": "string",
-                    "status": "available",
-                    "required": true,
-                    "array": false,
-                    "size": 255,
-                    "default": null
-                },
                 {
                     "key": "category",
                     "type": "string",
@@ -189,9 +206,41 @@
                     "array": false,
                     "size": 255,
                     "default": null
+                },
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
                 }
             ],
-            "indexes": []
+            "indexes": [
+                {
+                    "key": "CategoryASC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "category"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                },
+                {
+                    "key": "NameASC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "name"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                }
+            ]
         },
         {
             "$id": "622fe47df0d7f38b8bf5",
@@ -201,6 +250,16 @@
             "enabled": true,
             "permission": "collection",
             "attributes": [
+                {
+                    "key": "price",
+                    "type": "double",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "min": -1.7976931348623157e+308,
+                    "max": 1.7976931348623157e+308,
+                    "default": null
+                },
                 {
                     "key": "name",
                     "type": "string",
@@ -217,16 +276,6 @@
                     "required": true,
                     "array": false,
                     "size": 255,
-                    "default": null
-                },
-                {
-                    "key": "price",
-                    "type": "double",
-                    "status": "available",
-                    "required": false,
-                    "array": false,
-                    "min": -1.7976931348623157e+308,
-                    "max": 1.7976931348623157e+308,
                     "default": null
                 }
             ],
