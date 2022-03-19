@@ -96,13 +96,16 @@ function seedProducts(db, subCategories) {
 function generateFakeProducts(subCategory) {
   return new Array(8).fill(1).map(() => {
     const images = faker.random.arrayElement(imagePacks);
+    const description = new Array(faker.datatype.number({ min: 1, max: 10}))
+      .fill(0)
+      .map(() => faker.commerce.productDescription()).join('. ');
     return {
       name: faker.commerce.productName(),
-      description: faker.commerce.productDescription(),
       price: parseFloat(faker.commerce.price(5, 5000, 2)),
-      images,
       thumbnail: faker.random.arrayElement(images),
       subCategory: subCategory.$id,
+      description,
+      images,
     };
   });
 }

@@ -47,15 +47,6 @@
                     "default": null
                 },
                 {
-                    "key": "description",
-                    "type": "string",
-                    "status": "available",
-                    "required": false,
-                    "array": false,
-                    "size": 255,
-                    "default": null
-                },
-                {
                     "key": "price",
                     "type": "double",
                     "status": "available",
@@ -63,6 +54,15 @@
                     "array": false,
                     "min": -1.7976931348623157e+308,
                     "max": 1.7976931348623157e+308,
+                    "default": null
+                },
+                {
+                    "key": "description",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 2500,
                     "default": null
                 }
             ],
@@ -79,33 +79,11 @@
                     ]
                 },
                 {
-                    "key": "DescriptionFullTextASC",
-                    "type": "fulltext",
-                    "status": "available",
-                    "attributes": [
-                        "description"
-                    ],
-                    "orders": [
-                        "ASC"
-                    ]
-                },
-                {
                     "key": "NameFullTextDESC",
                     "type": "key",
                     "status": "available",
                     "attributes": [
                         "name"
-                    ],
-                    "orders": [
-                        "DESC"
-                    ]
-                },
-                {
-                    "key": "DescriptionFullTextDESC",
-                    "type": "key",
-                    "status": "available",
-                    "attributes": [
-                        "description"
                     ],
                     "orders": [
                         "DESC"
@@ -299,7 +277,69 @@
                     "default": null
                 }
             ],
-            "indexes": []
+            "indexes": [
+                {
+                    "key": "NameASC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "name"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                }
+            ]
+        },
+        {
+            "$id": "6234dd1357270f1389d3",
+            "$read": [],
+            "$write": [],
+            "name": "Product Details",
+            "enabled": true,
+            "permission": "collection",
+            "attributes": [
+                {
+                    "key": "title",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "content",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 1000,
+                    "default": null
+                },
+                {
+                    "key": "product",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": [
+                {
+                    "key": "ProductASC",
+                    "type": "unique",
+                    "status": "available",
+                    "attributes": [
+                        "product"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                }
+            ]
         }
     ]
 }

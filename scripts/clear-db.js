@@ -19,16 +19,16 @@ function initClient() {
 async function clearDB() {
   const client = initClient();
   const db = new appWrite.Database(client);
-  const categories = await db.listDocuments(process.env.SEED_COLLECTION_CATEGORIES);
-  const subCategories = await db.listDocuments(process.env.SEED_COLLECTION_SUB_CATEGORIES);
-  const products = await db.listDocuments(process.env.SEED_COLLECTION_PRODUCTS);
+  let categories = await db.listDocuments(process.env.SEED_COLLECTION_CATEGORIES, [], 100);
+  let subCategories = await db.listDocuments(process.env.SEED_COLLECTION_SUB_CATEGORIES, [], 100);
+  let products = await db.listDocuments(process.env.SEED_COLLECTION_PRODUCTS, [], 100);
 
   console.log('--------------------------------');
   console.log('Clear DB script: Items to remove');
   console.log('Categories: ', categories.total);
   console.log('Sub-Categories: ', subCategories.total);
   console.log('Products: ', products.total);
-  console.log('--------------------------------');
+  console.log('--------------');
 
   const promises = [].concat(
     categories.documents.map((item) => {
@@ -43,6 +43,16 @@ async function clearDB() {
   );
 
   await Promise.all(promises);
+
+  categories = await db.listDocuments(process.env.SEED_COLLECTION_CATEGORIES, [], 100);
+  subCategories = await db.listDocuments(process.env.SEED_COLLECTION_SUB_CATEGORIES, [], 100);
+  products = await db.listDocuments(process.env.SEED_COLLECTION_PRODUCTS, [], 100);
+
+  console.log('Clear DB script: Remaining Items');
+  console.log('Categories: ', categories.total);
+  console.log('Sub-Categories: ', subCategories.total);
+  console.log('Products: ', products.total);
+  console.log('--------------------------------');
 }
 
 clearDB();
