@@ -11,7 +11,35 @@
             "permission": "document",
             "attributes": [
                 {
+                    "key": "images",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": true,
+                    "size": 255,
+                    "default": null
+                },
+                {
                     "key": "subCategory",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "price",
+                    "type": "double",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "min": -1.7976931348623157e+308,
+                    "max": 1.7976931348623157e+308,
+                    "default": null
+                },
+                {
+                    "key": "name",
                     "type": "string",
                     "status": "available",
                     "required": true,
@@ -29,7 +57,7 @@
                     "default": null
                 },
                 {
-                    "key": "name",
+                    "key": "team",
                     "type": "string",
                     "status": "available",
                     "required": true,
@@ -38,22 +66,21 @@
                     "default": null
                 },
                 {
-                    "key": "images",
+                    "key": "store",
                     "type": "string",
                     "status": "available",
                     "required": true,
-                    "array": true,
+                    "array": false,
                     "size": 255,
                     "default": null
                 },
                 {
-                    "key": "price",
-                    "type": "double",
+                    "key": "bucket",
+                    "type": "string",
                     "status": "available",
-                    "required": false,
+                    "required": true,
                     "array": false,
-                    "min": -1.7976931348623157e+308,
-                    "max": 1.7976931348623157e+308,
+                    "size": 255,
                     "default": null
                 },
                 {
@@ -62,11 +89,22 @@
                     "status": "available",
                     "required": false,
                     "array": false,
-                    "size": 2500,
+                    "size": 5000,
                     "default": null
                 }
             ],
             "indexes": [
+                {
+                    "key": "SubCategoryASC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "subCategory"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                },
                 {
                     "key": "NameFullTextASC",
                     "type": "fulltext",
@@ -79,22 +117,11 @@
                     ]
                 },
                 {
-                    "key": "NameFullTextDESC",
+                    "key": "SubCategoryDESC",
                     "type": "key",
                     "status": "available",
                     "attributes": [
-                        "name"
-                    ],
-                    "orders": [
-                        "DESC"
-                    ]
-                },
-                {
-                    "key": "PriceDESC",
-                    "type": "key",
-                    "status": "available",
-                    "attributes": [
-                        "price"
+                        "subCategory"
                     ],
                     "orders": [
                         "DESC"
@@ -112,22 +139,22 @@
                     ]
                 },
                 {
-                    "key": "SubCategoryASC",
+                    "key": "PriceDESC",
                     "type": "key",
                     "status": "available",
                     "attributes": [
-                        "subCategory"
+                        "price"
                     ],
                     "orders": [
-                        "ASC"
+                        "DESC"
                     ]
                 },
                 {
-                    "key": "SubCategoryDESC",
+                    "key": "NameFullTextDESC",
                     "type": "key",
                     "status": "available",
                     "attributes": [
-                        "subCategory"
+                        "name"
                     ],
                     "orders": [
                         "DESC"
@@ -146,7 +173,7 @@
             "permission": "collection",
             "attributes": [
                 {
-                    "key": "name",
+                    "key": "icon",
                     "type": "string",
                     "status": "available",
                     "required": true,
@@ -155,7 +182,7 @@
                     "default": null
                 },
                 {
-                    "key": "icon",
+                    "key": "name",
                     "type": "string",
                     "status": "available",
                     "required": true,
@@ -197,22 +224,22 @@
             ],
             "indexes": [
                 {
-                    "key": "CategoryASC",
+                    "key": "NameASC",
                     "type": "key",
                     "status": "available",
                     "attributes": [
-                        "category"
+                        "name"
                     ],
                     "orders": [
                         "ASC"
                     ]
                 },
                 {
-                    "key": "NameASC",
+                    "key": "CategoryASC",
                     "type": "key",
                     "status": "available",
                     "attributes": [
-                        "name"
+                        "category"
                     ],
                     "orders": [
                         "ASC"
@@ -340,6 +367,500 @@
                     ]
                 }
             ]
+        },
+        {
+            "$id": "62519cb42c51574fb8c9",
+            "$read": [],
+            "$write": [],
+            "name": "Carts",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "total",
+                    "type": "double",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "min": 1,
+                    "max": 1.7976931348623157e+308,
+                    "default": null
+                },
+                {
+                    "key": "createdAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "modifiedAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "user",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "62519f552906674d0188",
+            "$read": [],
+            "$write": [],
+            "name": "Cart Items",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "cart",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "quantity",
+                    "type": "integer",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "min": 1,
+                    "max": 9223372036854776000,
+                    "default": null
+                },
+                {
+                    "key": "createdAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "modifiedAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "price",
+                    "type": "double",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "min": 1,
+                    "max": 1.7976931348623157e+308,
+                    "default": null
+                },
+                {
+                    "key": "options",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 5000,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "62519ff393a38c2900a2",
+            "$read": [],
+            "$write": [],
+            "name": "Orders",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "user",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "payment",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "total",
+                    "type": "double",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "min": 1,
+                    "max": 1.7976931348623157e+308,
+                    "default": null
+                },
+                {
+                    "key": "createdAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "modifiedAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "6251a03cbade60bad685",
+            "$read": [],
+            "$write": [],
+            "name": "Order Items",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "order",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "quantity",
+                    "type": "integer",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "min": 1,
+                    "max": 9223372036854776000,
+                    "default": null
+                },
+                {
+                    "key": "createdAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "modifiedAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "price",
+                    "type": "double",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "min": 1,
+                    "max": 1.7976931348623157e+308,
+                    "default": null
+                },
+                {
+                    "key": "options",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 5000,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "6251a088e8238444eb8d",
+            "$read": [],
+            "$write": [],
+            "name": "Payments",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "order",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "amount",
+                    "type": "double",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "min": 1,
+                    "max": 1.7976931348623157e+308,
+                    "default": null
+                },
+                {
+                    "key": "status",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "elements": [
+                        "PROCESING",
+                        "PAID",
+                        "CANCELED"
+                    ],
+                    "format": "enum",
+                    "default": null
+                },
+                {
+                    "key": "createdAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "modifiedAt",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "6251a31ead54e7436803",
+            "$read": [],
+            "$write": [],
+            "name": "Stores",
+            "enabled": true,
+            "permission": "collection",
+            "attributes": [
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "team",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "bucket",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "logo",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "phone",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "address",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "facebook",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "instagram",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "whatsup",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "telegram",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "6251ad88046a3ffc8448",
+            "$read": [],
+            "$write": [],
+            "name": "User Details",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "address",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "phone",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "whatsup",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "telegram",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "facebook",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "instagram",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "user",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
         }
     ]
 }

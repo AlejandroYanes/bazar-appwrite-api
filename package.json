@@ -2,15 +2,9 @@
     "name": "bazar-appwrite-api-helpers",
     "version": "0.1.0",
     "description": "bazar-api helper project (seeds, migrations...)",
-    "main": "index.js",
-    "scripts": {
-        "test": "npm test",
-        "seed": "node ./scripts/seed.js",
-        "clearDB": "node ./scripts/clear-db.js"
-    },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/AlejandroYanes/bazar-appwrite-api.git"
+        "url": "git+https://github.com/devland-cuba/bazar-appwrite-api.git"
     },
     "keywords": [
         "api",
@@ -18,16 +12,21 @@
         "migration",
         "helper"
     ],
-    "author": "ayanes",
+    "author": "devland",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/AlejandroYanes/bazar-appwrite-api/issues"
+        "url": "https://github.com/devland-cuba/bazar-appwrite-api/issues"
     },
-    "homepage": "https://github.com/AlejandroYanes/bazar-appwrite-api#readme",
+    "homepage": "https://github.com/devland-cuba/bazar-appwrite-api#readme",
+    "scripts": {
+        "seed": "node db/seed/index.js",
+        "clean-data": "node db/helpers/clean-db-data.js",
+        "build": "node db/helpers/build-db-structure.js",
+        "clean": "node db/helpers/clean-db-structure.js",
+        "clean:build": "npm run clean && npm run build"
+    },
     "dependencies": {
         "@faker-js/faker": "^6.0.0-beta.0",
-        "dotenv": "^16.0.0",
-        "faker": "^4.1.0",
         "node-appwrite": "^5.0.0"
     }
 }
