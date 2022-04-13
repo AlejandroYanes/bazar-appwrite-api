@@ -1,6 +1,7 @@
-const { AttributeType, IndexType, IndexOrder } = require('./base/appwrite-types');
+import { AttributeType, IndexType, IndexOrder } from './base/appwrite-types';
+import { Models } from 'node-appwrite';
 
-const ProductsCollection = {
+export const ProductsCollection = {
   id: process.env.BAZAR_COLLECTION_PRODUCTS,
   name: 'Products',
   permissionLevel: 'document',
@@ -103,4 +104,12 @@ const ProductsCollection = {
   ],
 };
 
-module.exports = { ProductsCollection };
+export interface ProductModel extends Models.Document {
+  name: string;
+  price: number;
+  thumbnail: string;
+  images: string[];
+  team: string;
+  bucket: string;
+  subCategory: string;
+}

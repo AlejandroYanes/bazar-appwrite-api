@@ -1,4 +1,4 @@
-const dataStructure = [
+export const categoriesTree = [
   {
     name: 'Hogar',
     icon: 'HOME',
@@ -11,7 +11,6 @@ const dataStructure = [
   },
   {
     name: 'Moda',
-    icon: 'FASHION',
     sub: [
       { name: 'Ropa de Hombre' },
       { name: 'Ropa de Mujer' },
@@ -21,7 +20,6 @@ const dataStructure = [
   },
   {
     name: 'Tecnologia',
-    icon: 'DEVICES',
     sub: [
       { name: 'Telefonos' },
       { name: 'Computadoras' },
@@ -30,7 +28,6 @@ const dataStructure = [
   },
   {
     name: 'Mascotas',
-    icon: 'PET',
     sub: [
       { name: 'Comida' },
       { name: 'Medicamentos' },
@@ -39,13 +36,24 @@ const dataStructure = [
     ],
   },
 ];
-const imagePacks = [
-  ['6230e694833eba9af7fd', '6230e68c8408102676f5', '6230e6863886926773ae', '6230e680d510c4ebdcd3', '6230e679ea1db38c9a89'],
-  ['6230e67302462c83920c', '6230e66d9fa17c991995', '6230e6673888c07e0662'],
-  ['6230e65aa161f312621f', '6230e653e8dc7794f676', '6230e64635a01953213e'],
-];
 
-module.exports = {
-  dataStructure,
-  imagePacks,
-};
+export const imagePacks = [
+  [
+    'drop-shirt.png',
+    'drop-shirt-0.png',
+    'drop-shirt-1.png',
+    'drop-shirt-2.png',
+  ],
+  [
+    'lightweight-jacket-0.png',
+    'lightweight-jacket-1.png',
+    'lightweight-jacket-2.png',
+  ],
+  [
+    't-shirt-0.png',
+    't-shirt-1.png',
+    't-shirt-2.png',
+    't-shirt-3.png',
+    't-shirt-4.png',
+  ],
+];

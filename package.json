@@ -19,14 +19,17 @@
     },
     "homepage": "https://github.com/devland-cuba/bazar-appwrite-api#readme",
     "scripts": {
-        "seed": "node db/seed/index.js",
-        "clean-data": "node db/helpers/clean-db-data.js",
+        "seed": "npx ts-node db/seed/seed.ts",
+        "clean-data": "npx ts-node db/helpers/clean-db-data.ts",
         "build": "node db/helpers/build-db-structure.js",
         "clean": "node db/helpers/clean-db-structure.js",
-        "clean:build": "npm run clean && npm run build"
+        "clean:build": "npm run clean && npm run build",
+        "run:ts": "npx ts-node"
     },
     "dependencies": {
         "@faker-js/faker": "^6.0.0-beta.0",
-        "node-appwrite": "^5.0.0"
+        "node-appwrite": "^5.0.0",
+        "ts-node": "^10.7.0",
+        "typescript": "^4.6.3"
     }
 }
