@@ -1,5 +1,5 @@
 import { env } from 'process';
-import appWrite, { Database, Teams, Storage } from 'node-appwrite';
+import appWrite, { Database, Teams, Storage, Users } from 'node-appwrite';
 import { faker } from '@faker-js/faker';
 import { CategoryModel, StoreModel, SubCategoryModel } from '../models';
 import initClient from '../helpers/init-appwrite-cli';
@@ -32,7 +32,7 @@ function seedSubCategories(db: Database, categories: CategoryModel[]): Promise<S
   return Promise.all(flattenPromises) as Promise<SubCategoryModel[]>;
 }
 
-async function seedStores(db: Database, teams: Teams, storage: Storage): Promise<StoreModel[]> {
+async function seedStores(db: Database, users: Users, teams: Teams, storage: Storage): Promise<StoreModel[]> {
   console.log('--- Seeding Stores');
   const fileSize = 8000000;
   const fileExtensions = ['jpeg', 'jpg', 'png'];
@@ -54,7 +54,11 @@ async function seedStores(db: Database, teams: Teams, storage: Storage): Promise
   const documents = [];
   for (const store of stores) {
     console.log(`------ creating ${store.name}`);
+    // const firstName = faker.name.firstName();
+    // const lastName = faker.name.lastName();
+    // const owner = await users.create('unique()', faker.internet.email(firstName, lastName, 'gmail.com'), faker.internet.password(10), `${firstName} ${lastName}`);
     const team = await teams.create('unique()', store.name);
+    // await teams.createMembership(team.$id, owner.email, ['owner'], 'http://localhost/own-team', owner.name);
     const bucket = await storage.createBucket('unique()', store.name, 'bucket', ['role:all'], [`team:${team.$id}`], true, fileSize, fileExtensions, false, false);
     const doc = await db.createDocument(env.BAZAR_COLLECTION_STORES!, 'unique()', { ...store, team: team.$id, bucket: bucket.$id }, ['role:all'], [`team:${team.$id}`]);
     documents.push(doc);
@@ -114,11 +118,12 @@ async function seedDB() {
   console.log('Stared DB seed');
   const client = initClient();
   const db = new appWrite.Database(client);
+  const users = new appWrite.Users(client);
   const teams = new appWrite.Teams(client);
   const storage = new appWrite.Storage(client);
   const categories = await seedCategories(db);
   const subCategories = await seedSubCategories(db, categories);
-  const stores = await seedStores(db, teams, storage);
+  const stores = await seedStores(db, users, teams, storage);
   await seedProducts(db, storage, subCategories, stores);
   console.log('-----------------------');
 }
