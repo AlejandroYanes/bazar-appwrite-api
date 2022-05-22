@@ -1,7 +1,6 @@
 export const categoriesTree = [
   {
     name: 'Hogar',
-    icon: 'HOME',
     sub: [
       { name: 'Decoracion' },
       { name: 'Muebles' },

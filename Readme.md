@@ -28,13 +28,21 @@ export BAZAR_COLLECTION_USER_DETAILS="..."
 ```
 
 ### Build the DB structure
-Next, you need to install the dependencies for this project and run
+To create the DB structure you need to use the appwrite-cli, follow the [initial steps](https://appwrite.io/docs/command-line)
+and then [deploy](https://appwrite.io/docs/command-line#deployCollections) the DB
+
+### Seeds
+You can seed the DB by running
 
 ```shell
-npm run build
+npm run seed
 ```
-This command call the `build-db-structure.js` script which creates
-all the DB structure based on the `appwrite.json`
+
+and clean the data using
+
+```shell
+npm run clean-data
+```
 
 ### Updating the DB structure
 Currently, the appwrite-cli does not correctly support migrations,

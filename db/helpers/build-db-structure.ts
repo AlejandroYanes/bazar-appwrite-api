@@ -1,8 +1,10 @@
-const appWrite = require('node-appwrite');
-const definitions = require('../../appwrite.json');
-const initClient = require('./init-appwrite-cli');
+import appWrite, { Database } from 'node-appwrite';
+// @ts-ignore
+import definitions from '../../appwrite.json';
+import initClient from './init-appwrite-cli';
+import {expectAttributes} from "./timing";
 
-async function buildAttributes(db, collectionId, attributes) {
+async function buildAttributes(db: Database, collectionId: string, attributes : any[]) {
   for (const attribute of attributes) {
     const { key, type, size, required, array, min, max, elements } = attribute;
     switch (type) {
@@ -42,7 +44,7 @@ async function buildAttributes(db, collectionId, attributes) {
   }
 }
 
-async function buildIndexes(db, collectionId, indexes) {
+async function buildIndexes(db: Database, collectionId: string, indexes: any[]) {
   for (const index of indexes) {
     const { key, type, attributes, orders } = index;
     await db.createIndex(collectionId, key, type, attributes, orders);
@@ -58,6 +60,7 @@ async function buildDbStructure() {
     const { $id, $read, $write, name, permission, attributes, indexes } = collection;
     await db.createCollection($id, name, permission, $read, $write);
     await buildAttributes(db, $id, attributes);
+    await expectAttributes(db, $id, attributes.map((attr: any) => attr.key));
     await buildIndexes(db, $id, indexes);
   }
 }

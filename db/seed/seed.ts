@@ -42,7 +42,7 @@ async function seedStores(db: Database, users: Users, teams: Teams, storage: Sto
       .map(() => ({
         name: faker.company.companyName(),
         logo: 'logo-id',
-        phone: faker.phone.phoneNumber(),
+        phone: faker.phone.phoneNumber('+44 #### ######'),
         address: faker.address.streetAddress(),
         facebook: faker.datatype.boolean() ? faker.internet.userName() : undefined,
         instagram: faker.datatype.boolean() ? faker.internet.userName() : undefined,
@@ -51,7 +51,7 @@ async function seedStores(db: Database, users: Users, teams: Teams, storage: Sto
       }))
   );
 
-  const documents = [];
+  const documents: any[] = [];
   for (const store of stores) {
     console.log(`------ creating ${store.name}`);
     // const firstName = faker.name.firstName();
@@ -75,7 +75,7 @@ async function seedProducts(db: Database, storage: Storage, subCategories: SubCa
       console.log(`------ creating ${product.name} (CUP ${product.price})`);
       const store = faker.random.arrayElement(stores);
       const images = faker.random.arrayElement(imagePacks);
-      const storedImages = [];
+      const storedImages: any = [];
       for (const image of images) {
         const stored = await storage.createFile(store.bucket, 'unique()',`assets/product-images/${image}`, ['role:all'], [`team:${store.team}`]);
         storedImages.push(stored);
@@ -88,8 +88,9 @@ async function seedProducts(db: Database, storage: Storage, subCategories: SubCa
           ...product,
           store: store.$id,
           bucket: store.bucket,
+          team: store.team,
           images: storedImages.map((file) => file.$id),
-          thumbnail: faker.random.arrayElement(storedImages).$id,
+          thumbnail: (faker.random.arrayElement(storedImages) as any).$id,
         },
         ['role:all'],
         [`team:${store.team}`],
