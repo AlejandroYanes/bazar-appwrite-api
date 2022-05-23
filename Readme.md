@@ -27,7 +27,7 @@ export BAZAR_COLLECTION_STORES="..."
 export BAZAR_COLLECTION_USER_DETAILS="..."
 ```
 
-### Build the DB structure
+### Build the DB structure (From here below it does work)
 To create the DB structure you need to use the appwrite-cli, follow the [initial steps](https://appwrite.io/docs/command-line)
 and then [deploy](https://appwrite.io/docs/command-line#deployCollections) the DB
 
